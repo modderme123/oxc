@@ -1,4 +1,4 @@
-Compatibility: 168/591 (28.43%)
+Compatibility: 171/591 (28.93%)
 
 # Failed
 
@@ -74,7 +74,6 @@ Compatibility: 168/591 (28.43%)
 * assignment-comments/call2.js
 * assignment-comments/function.js
 * assignment-comments/identifier.js
-* assignment-comments/number.js
 * assignment-comments/string.js
 
 ### async
@@ -222,7 +221,6 @@ Compatibility: 168/591 (28.43%)
 * comments-closure-typecast/comment-in-the-middle.js
 * comments-closure-typecast/comment-placement.js
 * comments-closure-typecast/extra-spaces-and-asterisks.js
-* comments-closure-typecast/iife-issue-5850-isolated.js
 * comments-closure-typecast/iife.js
 * comments-closure-typecast/issue-4124.js
 * comments-closure-typecast/issue-8045.js
@@ -467,7 +465,6 @@ Compatibility: 168/591 (28.43%)
 ### optional-chaining
 * optional-chaining/chaining.js
 * optional-chaining/comments.js
-* optional-chaining/eval.js
 
 ### optional-chaining-assignment
 * optional-chaining-assignment/invalid-destructuring-arr.js
