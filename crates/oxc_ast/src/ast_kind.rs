@@ -109,6 +109,7 @@ pub enum AstKind<'a> {
     Decorator(&'a Decorator<'a>),
 
     ModuleDeclaration(&'a ModuleDeclaration<'a>),
+    ExportSpecifier(&'a ExportSpecifier),
 
     // JSX
     // Please make sure to add these to `is_jsx` below.
@@ -412,6 +413,7 @@ impl<'a> GetSpan for AstKind<'a> {
             Self::Decorator(x) => x.span,
 
             Self::ModuleDeclaration(x) => x.span(),
+            Self::ExportSpecifier(x) => x.span,
 
             Self::JSXOpeningElement(x) => x.span,
             Self::JSXElementName(x) => x.span(),
@@ -584,6 +586,8 @@ impl<'a> AstKind<'a> {
             Self::Decorator(_) => "Decorator".into(),
 
             Self::ModuleDeclaration(_) => "ModuleDeclaration".into(),
+            Self::ExportSpecifier(_) => "ExportSpecifier".into(),
+
             Self::JSXOpeningElement(_) => "JSXOpeningElement".into(),
             Self::JSXElementName(_) => "JSXElementName".into(),
             Self::JSXElement(_) => "JSXElement".into(),

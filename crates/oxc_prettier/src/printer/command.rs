@@ -1,5 +1,6 @@
 use crate::doc::Doc;
 
+#[derive(Debug)]
 pub struct Command<'a> {
     pub indent: Indent,
     pub mode: Mode,

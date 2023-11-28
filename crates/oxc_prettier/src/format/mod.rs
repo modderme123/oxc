@@ -1122,11 +1122,13 @@ impl<'a> Format<'a> for TSNamespaceExportDeclaration {
 
 impl<'a> Format<'a> for ExportSpecifier {
     fn format(&self, p: &mut Prettier<'a>) -> Doc<'a> {
-        if self.exported.span() == self.local.span() {
-            self.local.format(p)
-        } else {
-            array![p, self.local.format(p), ss!(" as "), self.exported.format(p)]
-        }
+        wrap!(p, self, ExportSpecifier, {
+            if self.exported.span() == self.local.span() {
+                self.local.format(p)
+            } else {
+                array![p, self.local.format(p), ss!(" as "), self.exported.format(p)]
+            }
+        })
     }
 }
 

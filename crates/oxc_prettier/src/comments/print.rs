@@ -86,20 +86,29 @@ impl<'a> Prettier<'a> {
     pub(crate) fn print_trailing_comments(&mut self, range: Span) -> Option<Doc<'a>> {
         let mut parts = self.vec();
         let mut previous_comment: Option<Comment> = None;
-        while let Some((start, end, kind)) = self.trivias.peek().copied() {
+        'outer: while let Some((start, end, kind)) = self.trivias.peek().copied() {
             let comment = Comment::new(start, end, kind);
-            // Trailing comment if there is nothing in between.
-            if range.end < comment.start
-                && self.source_text[range.end as usize..comment.start as usize]
-                    .chars()
-                    .all(|c| c == ' ')
-            {
-                self.trivias.next();
-                let previous = self.print_trailing_comment(&mut parts, comment, previous_comment);
-                previous_comment = Some(previous);
-            } else {
+            if comment.start <= range.end {
                 break;
             }
+            // Trailing comment if there is nothing in between.
+            let mut has_newline = false;
+            let mut has_whitespace = false;
+            let mut start_with_comma = false;
+            for (i, c) in
+                self.source_text[range.end as usize..comment.start as usize].bytes().enumerate()
+            {
+                match c {
+                    b' ' => has_whitespace = true,
+                    b'\n' => has_newline = true,
+                    b',' if i == 0 && !comment.is_block => start_with_comma = true,
+                    _ => break 'outer,
+                }
+            }
+
+            self.trivias.next();
+            let previous = self.print_trailing_comment(&mut parts, comment, previous_comment);
+            previous_comment = Some(previous);
         }
         if parts.is_empty() {
             return None;
@@ -118,13 +127,13 @@ impl<'a> Prettier<'a> {
         if previous.is_some_and(|c| c.has_line_suffix && !c.is_block)
             || self.has_newline(comment.start, /* backwards */ true)
         {
-            parts.push(printed);
             let suffix = {
                 let mut parts = self.vec();
                 parts.extend(hardline!());
                 if self.is_previous_line_empty(comment.start) {
                     parts.extend(hardline!());
                 }
+                parts.push(printed);
                 parts
             };
             parts.push(Doc::LineSuffix(suffix));

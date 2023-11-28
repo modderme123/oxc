@@ -1,4 +1,4 @@
-Compatibility: 194/591 (32.83%)
+Compatibility: 190/591 (32.15%)
 
 # Failed
 
@@ -60,6 +60,7 @@ Compatibility: 194/591 (32.83%)
 * assignment/issue-3819.js
 * assignment/issue-6922.js
 * assignment/issue-7572.js
+* assignment/issue-7961.js
 * assignment/lone-arg.js
 * assignment/sequence.js
 
@@ -262,7 +263,6 @@ Compatibility: 194/591 (32.83%)
 * eol/range-and-cursor-1.js
 
 ### export
-* export/blank-line-between-specifiers.js
 * export/same-local-and-exported.js
 
 ### export-default/escaped
@@ -286,6 +286,9 @@ Compatibility: 194/591 (32.83%)
 
 ### function-comments
 * function-comments/params-trail-comments.js
+
+### function-first-param
+* function-first-param/function_expression.js
 
 ### function-single-destructuring
 * function-single-destructuring/array.js
@@ -411,6 +414,9 @@ Compatibility: 194/591 (32.83%)
 ### no-semi-babylon-extensions
 * no-semi-babylon-extensions/no-semi.js
 
+### non-strict
+* non-strict/keywords.js
+
 ### nullish-coalescing
 * nullish-coalescing/nullish_coalesing_operator.js
 
@@ -436,6 +442,7 @@ Compatibility: 194/591 (32.83%)
 ### optional-chaining
 * optional-chaining/chaining.js
 * optional-chaining/comments.js
+* optional-chaining/eval.js
 
 ### optional-chaining-assignment
 * optional-chaining-assignment/invalid-destructuring-arr.js
@@ -519,6 +526,7 @@ Compatibility: 194/591 (32.83%)
 * template/graphql.js
 * template/indent.js
 * template/inline.js
+* template/parenthesis.js
 
 ### template-align
 * template-align/indent.js
