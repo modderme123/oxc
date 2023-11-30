@@ -18,6 +18,7 @@ mod misc;
 mod module;
 mod object;
 mod property;
+mod semicolon;
 mod statement;
 mod string;
 mod template_literal;
@@ -1308,12 +1309,14 @@ impl<'a> Format<'a> for BigintLiteral {
 
 impl<'a> Format<'a> for RegExpLiteral {
     fn format(&self, p: &mut Prettier<'a>) -> Doc<'a> {
-        let mut parts = p.vec();
-        parts.push(ss!("/"));
-        parts.push(p.str(self.regex.pattern.as_str()));
-        parts.push(ss!("/"));
-        parts.push(format!(p, self.regex.flags));
-        Doc::Array(parts)
+        wrap!(p, self, RegExpLiteral, {
+            let mut parts = p.vec();
+            parts.push(ss!("/"));
+            parts.push(p.str(self.regex.pattern.as_str()));
+            parts.push(ss!("/"));
+            parts.push(format!(p, self.regex.flags));
+            Doc::Array(parts)
+        })
     }
 }
 

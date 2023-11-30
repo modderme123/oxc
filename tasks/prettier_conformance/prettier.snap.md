@@ -1,4 +1,4 @@
-Compatibility: 205/561 (36.54%)
+Compatibility: 206/561 (36.72%)
 
 # Failed
 
@@ -350,7 +350,6 @@ Compatibility: 205/561 (36.54%)
 
 ### no-semi
 * no-semi/class.js
-* no-semi/comments.js
 * no-semi/issue2006.js
 * no-semi/no-semi.js
 

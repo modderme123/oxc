@@ -30,7 +30,7 @@ impl<'a> Prettier<'a> {
         }
     }
 
-    fn need_parens(&mut self, kind: AstKind<'a>) -> bool {
+    pub(crate) fn need_parens(&mut self, kind: AstKind<'a>) -> bool {
         if matches!(kind, AstKind::Program(_)) || kind.is_statement() || kind.is_declaration() {
             return false;
         }
@@ -465,7 +465,7 @@ impl<'a> Prettier<'a> {
         result
     }
 
-    fn has_naked_left_side(kind: AstKind<'a>) -> bool {
+    pub(crate) fn has_naked_left_side(kind: AstKind<'a>) -> bool {
         matches!(
             kind,
             AstKind::AssignmentExpression(_)
@@ -481,12 +481,26 @@ impl<'a> Prettier<'a> {
         ) || matches!(kind, AstKind::UpdateExpression(e) if !e.prefix)
     }
 
-    fn get_left_side_path_name(kind: AstKind<'a>) -> AstKind<'a> {
+    pub(crate) fn get_left_side_path_name(kind: AstKind<'a>) -> AstKind<'a> {
         match kind {
+            AstKind::SequenceExpression(e) => AstKind::from_expression(&e.expressions[0]),
             AstKind::CallExpression(e) => AstKind::from_expression(&e.callee),
             AstKind::ConditionalExpression(e) => AstKind::from_expression(&e.test),
             AstKind::TaggedTemplateExpression(e) => AstKind::from_expression(&e.tag),
-            AstKind::AssignmentExpression(e) => AstKind::AssignmentTarget(&e.left),
+            AstKind::AssignmentExpression(e) => match &e.left {
+                AssignmentTarget::SimpleAssignmentTarget(target) => match target {
+                    SimpleAssignmentTarget::AssignmentTargetIdentifier(ident) => {
+                        AstKind::IdentifierReference(ident)
+                    }
+                    SimpleAssignmentTarget::MemberAssignmentTarget(e) => {
+                        AstKind::MemberExpression(e)
+                    }
+                    _ => panic!("need to handle {}", kind.debug_name()),
+                },
+                AssignmentTarget::AssignmentTargetPattern(_) => {
+                    panic!("need to handle {}", kind.debug_name())
+                }
+            },
             AstKind::MemberExpression(e) => AstKind::from_expression(e.object()),
             _ => panic!("need to handle {}", kind.debug_name()),
         }

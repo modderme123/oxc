@@ -138,6 +138,7 @@ macro_rules! wrap {
         let leading = $p.print_leading_comments(kind.span());
         let doc = $block;
         let doc = $p.wrap_parens(doc, kind);
+        let doc = $crate::format::semicolon::should_print_leading_semicolon($p, doc);
         let trailing = $p.print_trailing_comments(kind.span());
         let doc = $p.print_comments(leading, doc, trailing);
         $p.leave_node();
