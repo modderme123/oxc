@@ -154,6 +154,7 @@ mod unicorn {
     pub mod filename_case;
     pub mod new_for_builtins;
     pub mod no_abusive_eslint_disable;
+    pub mod prefer_set_has;
     pub mod no_array_reduce;
     pub mod no_await_expression_member;
     pub mod no_console_spaces;
@@ -334,6 +335,7 @@ oxc_macros::declare_all_lint_rules! {
     unicorn::error_message,
     unicorn::escape_case,
     unicorn::filename_case,
+    unicorn::prefer_set_has,
     unicorn::new_for_builtins,
     unicorn::no_abusive_eslint_disable,
     unicorn::no_array_reduce,
