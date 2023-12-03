@@ -196,6 +196,7 @@ mod unicorn {
     pub mod prefer_includes;
     pub mod prefer_logical_operator_over_ternary;
     pub mod prefer_math_trunc;
+    pub mod prefer_modern_math_apis;
     pub mod prefer_native_coercion_functions;
     pub mod prefer_node_protocol;
     pub mod prefer_number_properties;
@@ -383,6 +384,7 @@ oxc_macros::declare_all_lint_rules! {
     unicorn::prefer_includes,
     unicorn::prefer_logical_operator_over_ternary,
     unicorn::prefer_math_trunc,
+    unicorn::prefer_modern_math_apis,
     unicorn::prefer_native_coercion_functions,
     unicorn::prefer_number_properties,
     unicorn::prefer_optional_catch_binding,

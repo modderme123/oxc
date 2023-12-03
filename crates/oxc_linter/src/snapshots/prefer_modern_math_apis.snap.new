@@ -1,0 +1,164 @@
+---
+source: crates/oxc_linter/src/tester.rs
+assertion_line: 119
+expression: prefer_modern_math_apis
+---
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.sqrt(a * a + b * b)
+   · ────────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.sqrt(a ** 2 + b ** 2)
+   · ──────────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.sqrt(a * a + b ** 2)
+   · ─────────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.sqrt(a * a + b * b + c * c)
+   · ────────────────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.sqrt(a ** 2 + b ** 2 + c ** 2)
+   · ───────────────────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.sqrt(a * a + b * b,)
+   · ─────────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.sqrt(a ** 2 + b ** 2,)
+   · ───────────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.sqrt((( a ** 2 )) + (( b ** 2 + c ** 2 )) + (( d )) * (( d )) + (( e )) ** (( 2 )))
+   · ────────────────────────────────────────────────────────────────────────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.log(x) * Math.LOG10E
+   ·               ───────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.LOG10E * Math.log(x)
+   · ───────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.log(x) / Math.LN10
+   · ───────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.log((( 0,x ))) * Math.LOG10E
+   ·                       ───────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.LOG10E * Math.log((( 0,x )))
+   · ───────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.log((( 0,x ))) / Math.LN10
+   · ───────────────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:3:1]
+ 3 │                     return (
+ 4 │ ╭─▶                     Math.log(x)
+ 5 │ ╰─▶                         / Math.LN10
+ 6 │                     );
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.log(x) * Math.LOG2E
+   ·               ──────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.LOG2E * Math.log(x)
+   · ──────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.log(x) / Math.LN2
+   · ──────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.log((( 0,x ))) * Math.LOG2E
+   ·                       ──────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.LOG2E * Math.log((( 0,x )))
+   · ──────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:1:1]
+ 1 │ Math.log((( 0,x ))) / Math.LN2
+   · ──────────────────────────────
+   ╰────
+  help: 
+
+  ⚠ eslint-plugin-unicorn(prefer-modern-math-apis):
+   ╭─[prefer_modern_math_apis.tsx:3:1]
+ 3 │                     return (
+ 4 │ ╭─▶                     Math.log(x)
+ 5 │ ╰─▶                         / Math.LN2
+ 6 │                     );
+   ╰────
+  help: 
+
+
